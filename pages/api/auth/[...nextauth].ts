@@ -10,7 +10,7 @@ export default NextAuth({
   ],
   callbacks: {
     async jwt({ token }) {
-      switch (token?.name?.toLowerCase()) {
+      switch (token?.name?.toLowerCase()) { // depends on case sensitivity.  authenticating as aLiCe vs Alice vs alice if they are unique
         case 'alice':
           token.role = Roles.ADMIN;
           break;

@@ -15,7 +15,7 @@
       "react-dom": "^18.2.0",
       "apollo-server-micro": "^3.7.0",
       "graphql": "^16.6.0",
-      "jsonwebtoken": "^9.0.0",
+      // "jsonwebtoken": "^9.0.0",
       "@apollo/client": "^3.7.0"
     },
     "devDependencies": {

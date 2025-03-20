@@ -5,6 +5,8 @@ import java.util.*;
 import java.io.*;
 import java.io.ObjectInputFilter.Config;
 import java.util.logging.*;
+// Maybe not the best package to use. https://bitbucket.org/snakeyaml/snakeyaml/wiki/CVE%20&%20NIST.md
+// Author: Most of them we consider as minor
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
@@ -16,12 +18,12 @@ class FinancialAccountManager {
 
     static {
         try (InputStream input = new FileInputStream("config.yaml")) {
-            Yaml yaml = new Yaml(new Constructor(Config.class));
+            Yaml yaml = new Yaml(new Constructor(Config.class));    // Use SafeConstructor and be safe
             Config config = yaml.load(input);
             DB_USER = config.getDatabase().getDbUser();
             DB_PASSWORD = config.getDatabase().getDbPassword();
             API_KEY = config.getApi().getPaymentGatewayKey();
-            logger.info("user Info" + DB_USER + ", " + API_KEY);
+            // logger.info("user Info" + DB_USER + ", " + API_KEY);
 
         } catch (IOException e) {
             e.printStackTrace(); 
